@@ -1,0 +1,7 @@
+{
+  "name": "my-musubix-project",
+  "version": "1.0.0",
+  "dependencies": {
+    "musubix3": "latest"
+  }
+}
