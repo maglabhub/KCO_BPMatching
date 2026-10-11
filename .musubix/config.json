@@ -2,7 +2,44 @@
   "schemaVersion": 1,
   "language": "auto",
   "qualityProfile": "custom",
-  "commands": [],
+  "commands": [
+    {
+      "name": "test",
+      "command": "npm",
+      "args": ["test", "--"],
+      "adapter": "vitest",
+      "required": true,
+      "timeoutMs": 120000
+    },
+    {
+      "name": "typecheck",
+      "command": "npm",
+      "args": ["run", "typecheck"],
+      "required": false,
+      "timeoutMs": 120000
+    },
+    {
+      "name": "coverage",
+      "command": "npm",
+      "args": ["run", "coverage"],
+      "required": false,
+      "timeoutMs": 180000
+    },
+    {
+      "name": "benchmark",
+      "command": "npm",
+      "args": ["run", "benchmark"],
+      "required": false,
+      "timeoutMs": 300000
+    },
+    {
+      "name": "security",
+      "command": "npm",
+      "args": ["audit"],
+      "required": false,
+      "timeoutMs": 60000
+    }
+  ],
   "requiredChecks": [
     "requirements",
     "design",
@@ -18,7 +55,23 @@
   },
   "architecture": {
     "forbidCycles": true,
-    "rules": []
+    "rules": [
+      {
+        "name": "matcher-isolation",
+        "from": "src/matcher/**",
+        "disallow": ["src/optimizer/**"]
+      },
+      {
+        "name": "scoring-isolation",
+        "from": "src/scoring/**",
+        "disallow": ["src/optimizer/**"]
+      },
+      {
+        "name": "optimizer-dependency",
+        "from": "src/optimizer/**",
+        "disallow": []
+      }
+    ]
   },
   "codeGraph": {
     "mode": "compatible"
@@ -35,8 +88,7 @@
     "redPreflightCommands": []
   },
   "approval": {
-    "mode": "required",
-    "domains": []
+    "mode": "required"
   },
   "workflow": {
     "mode": "compatible",
