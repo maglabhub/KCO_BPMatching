@@ -2,12 +2,14 @@
   "name": "my-musubix-project",
   "version": "1.0.0",
   "dependencies": {
-    "musubix3": "^0.1.20"
+    "musubix3": "^0.1.20",
+    "@nahisaho/yata-local": "^1.6.3"
   },
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "yata:init": "npx tsx src/yata-local-init.ts"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/maglabhub/KCO_BPMatching/issues"
   },
-  "homepage": "https://github.com/maglabhub/KCO_BPMatching#readme"
+  "homepage": "https://github.com/maglabhub/KCO_BPMatching#readme",
+  "devDependencies": {
+    "tsx": "^4.16.0"
+  }
 }
